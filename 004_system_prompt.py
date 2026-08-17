@@ -22,11 +22,12 @@ def add_assistant_message(messages, text):
 
 
 # Main request
-def chat(messages, system=None):
+def chat(messages, system=None, temperature=1.0):
     params = {
         "model": model,
         "max_tokens": 1000,
         "messages": messages,
+        "temperature": temperature,
     }
 
     if system:
@@ -42,13 +43,16 @@ system_prompt = """
     You are a math tutor. Do not directly answer student's questions but 
     guide them to the answer step by step.
 """
+temperature=0.1 # 0 is more deterministic, 1 is more creative
 
 
 while True:
     user_input = input("Prompt? > ")
     print("> ", user_input)
     add_user_message(messages, user_input)
-    response = chat(messages, system=system_prompt) # Send request to API
-    add_assistant_message(messages, response) # Record response in history  
+
+    response = chat(messages, system=system_prompt, temperature=temperature)
+
+    add_assistant_message(messages, response)
     print("Response > ", response.content[0].text)
 
