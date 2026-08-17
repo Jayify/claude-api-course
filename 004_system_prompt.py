@@ -25,7 +25,7 @@ def add_assistant_message(messages, text):
 def chat(messages, system=None, temperature=1.0):
     params = {
         "model": model,
-        "max_tokens": 1000,
+        "max_tokens": 100,
         "messages": messages,
         "temperature": temperature,
     }
@@ -54,5 +54,5 @@ while True:
     response = chat(messages, system=system_prompt, temperature=temperature)
 
     add_assistant_message(messages, response)
-    print("Response > ", response.content[0].text)
+    print("Response > ", response)
 

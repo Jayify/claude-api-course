@@ -26,7 +26,7 @@ def chat(messages):
     # Make a request
     message = client.messages.create(
         model=model,
-        max_tokens=1000,
+        max_tokens=100,
         messages=messages
     )
     return message.content[0].text
@@ -41,6 +41,6 @@ while True:
     add_user_message(messages, user_input)
     response = chat(messages) # Send request to API
     add_assistant_message(messages, response) # Record response in history  
-    print("Response > ", response.content[0].text)
+    print("Response > ", response)
 
 

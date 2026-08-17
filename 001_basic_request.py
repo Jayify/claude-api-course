@@ -14,7 +14,7 @@ model = "claude-haiku-4-5-20251001"
 # Make a request
 message = client.messages.create(
     model=model,
-    max_tokens=1000,
+    max_tokens=100,
     messages=[
         {
             "role": "user",
